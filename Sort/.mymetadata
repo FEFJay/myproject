@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Sort"
+  id="myeclipse.1474908131673"
+  context-root="/Sort"
+  j2ee-spec="6.0"
+  archive="Sort.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

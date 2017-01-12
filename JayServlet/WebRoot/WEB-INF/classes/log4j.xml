@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- 在项目中使用日志管理，将相应JAR包与XML文件放到相应目录下 -->
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+ <appender name="console" class="org.apache.log4j.ConsoleAppender">
+  <layout class="org.apache.log4j.PatternLayout">
+   <param name="ConversionPattern" value="%d [%t] %-5p (%c:%L) - %m%n" />
+   <param name="Encoding" value="UTF-8" />
+  </layout>
+ </appender>
+ <appender name="file" class="org.apache.log4j.RollingFileAppender">
+  <param name="threshold" value="info" />
+  <!-- 服务器安装目录下log文件的地址 -->
+  <param name="file" value="../logs/jay.log" />
+  <param name="maxFileSize" value="10MB" />
+  <param name="maxBackupIndex" value="5" />
+  <param name="append" value="true" />
+  <param name="Encoding" value="GBK" />
+  <layout class="org.apache.log4j.PatternLayout">
+   <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss.SSS} [%p]-[%c:%L] %m%n" />
+  </layout>
+ </appender>
+
+ <logger name="org.apache.commons.beanutils" additivity="true">
+  <level value="ERROR" />
+ </logger>
+ <logger name="org.springframework.security" additivity="true">
+  <level value="ERROR" />
+ </logger>
+ <logger name="org.apache.commons.digester" additivity="true">
+  <level value="ERROR" />
+ </logger>
+ 
+  <logger name="org.springframework.flex.servlet" additivity="true">
+  <level value="WARN" />
+ </logger>
+ <root>
+  <level value="INFO" />
+  <appender-ref ref="console" />
+  <appender-ref ref="file" />
+ </root>
+</log4j:configuration>

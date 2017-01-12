@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TestWebPath"
+  id="myeclipse.1479111857491"
+  context-root="/path"
+  j2ee-spec="6.0"
+  archive="TestWebPath.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

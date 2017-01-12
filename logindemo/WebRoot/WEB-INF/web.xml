@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <web-app> 
+
+ <display-name>My Web Application</display-name> 
+ <description>  A application for test. </description> 
+ <servlet> 
+ 
+<servlet-name>Login</servlet-name> 
+ <display-name>Login</display-name>
+ <description>A login Servlet</description> 
+ <servlet-class>login.Login</servlet-class> 
+ </servlet> 
+
+ <servlet-mapping> 
+ 
+<servlet-name>Login</servlet-name> 
+ <url-pattern>/Login</url-pattern>  
+ </servlet-mapping> 
+ <servlet> 
+ 
+<servlet-name>Register</servlet-name> 
+ <display-name>Register</display-name> 
+ 
+<description>A Register Servlet</description> 
+ <servlet-class>register.Register</servlet-class> 
+ </servlet> 
+ 
+<servlet-mapping> 
+ 
+<servlet-name>Register</servlet-name> 
+ <url-pattern>/Register</url-pattern> 
+ </servlet-mapping> 
+ </web-app>

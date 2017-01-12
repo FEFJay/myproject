@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  ">
+
+
+   <bean name="userDao" class="com.login.dao.UserDaoImpl"></bean>
+   <bean name="userBiz" class="com.login.biz.UserBizImpl">
+      <property name="userDao" ref="userDao"></property>
+   </bean>
+   
+   <!-- 分别定义日志通知(前置、后置、异常、环绕)，将日志切面交给spring容器管理 -->
+   <bean name="allLogAdvice" class="com.login.aop.AllLogAdvice"></bean>
+
+      
+   <!-- aop配置 -->
+   <aop:config>
+        <!--配置日志切面 -->
+        <aop:aspect id="logaop" ref="allLogAdvice">
+             <!--配置日志切入点 execution(* com.login.biz.UserBiz.*(..)), 是对UserBiz中的所有方法都进行拦截-->
+             <aop:pointcut  id="logpointcut" expression="execution(* com.login.biz.UserBiz.*(..))"/>
+             
+             <!-- 分别指定前置、后置、异常、环绕通知,对应日志类里面的方法名称 -->
+             <aop:before method="myBeforeAdvice" pointcut-ref="logpointcut" />
+             <aop:after-returning method="myAfterReturnAdvice" pointcut-ref="logpointcut" />
+             <aop:after-throwing method="myThrowingAdvice" pointcut-ref="logpointcut" throwing="e"/>
+             <aop:around method="myAroundAdvice" pointcut-ref="logpointcut" />
+        </aop:aspect>
+   </aop:config>
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
